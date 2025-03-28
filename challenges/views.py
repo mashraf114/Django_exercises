@@ -48,7 +48,12 @@ def monthly_challenge_by_number(request, month):
 def monthly_challenge(request, month): 
     try:
         challenge_text = monthly_challenges[month]
-        return render(request, "challenges/challenge.html")
-        return HttpResponse(response_data)
+        return render(request, "challenges/challenge.html",{
+            "mytext": challenge_text,
+            "title": "zMonthly Challenge",
+            "month_name": month
+
+
+        })
     except:
         return HttpResponseNotFound("<h1>This month is not supported!</h1>")
